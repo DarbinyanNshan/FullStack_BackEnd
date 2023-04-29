@@ -16,7 +16,9 @@ const {
 const { 
   signIn,
   signUp, 
-  me, 
+  me,
+  getUsers,
+  DeletePosts, 
 } = require('./controller/UserController');
 
 
@@ -65,11 +67,17 @@ app.get('/me',
 app.post('/creat-task',
           creatTask
 )
-
 app.get('/users/:userId/tasks',
           verifyToken,
           getTasks
 )
+app.get('/get-users',
+          getUsers
+)
+app.put('/delete-users',
+            DeletePosts
+)
+
 
 
 server.listen(PORT, () => {

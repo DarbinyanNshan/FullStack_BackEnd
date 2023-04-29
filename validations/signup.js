@@ -5,7 +5,7 @@ exports.createUserSignUp = [
         .notEmpty()
         .withMessage('Name field is required')
         .isLength({ min: 2 })
-        .withMessage('Name min length 6 symbol.'),
+        .withMessage('Name min length 2 symbol.'),
     check('lastName')
         .notEmpty()
         .withMessage('Last Name field is required')
@@ -19,12 +19,12 @@ exports.createUserSignUp = [
     check('age')
         .notEmpty()  
         .withMessage('Age is required')
-        .isLength({min: 1})
+        .isLength({min: 0})
         .withMessage('Age min length 1 symbol'),
     check('password')
         .notEmpty()  
         .withMessage('password is required')
-        .isLength({min: 8})
-        .withMessage('password min length 8 symbol'),
+        .isLength({min: 4})
+        .withMessage('password min length 4 symbol'),
     
   ];
