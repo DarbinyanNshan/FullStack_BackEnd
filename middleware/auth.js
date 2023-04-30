@@ -1,16 +1,16 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
+const {secret} = require('../config/config');
 
-module.exports = (req, res, next) => {
-    const token = req.headers['x-access-token']
-
-    if (!token) {
-        return res.status(403).send('A token is required for authentication')
-    }
+exports.authMiddleware = (req, res, next) =>{
     try {
-        const  decodedUser = jwt.verify(token, process.env.TOKEN_KEY)
-        req.user = decodedUser
-    } catch (error) {
-        return res.status(401).send('Invalid Token')
+        const token = req.headers.authentication;
+        if (!token) {
+            return res.status(403).json({message: "User not found"});
+        };
+        const decodedData = jwt.verify(token, secret);
+        req.user = decodedData;
+        next();
+    } catch (e) {
+        return res.status(403).json({message: "User not logined"});
     }
-    return next();
-}
+};

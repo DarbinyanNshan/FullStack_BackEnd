@@ -1,35 +1,38 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema({
-    userId: {
-        type: String,
-        default: null
+const taskSchema = new Schema({ 
+    title:{
+        type:String,
+        require:true,
     },
-    title: {
-        type: String,
-        default: null
+    description:{
+        type:String,
+        require:true,
     },
-    description: {
-        type: String,
-        default: null
+    userId:{
+        type:String,
+        require:true,
     },
-    assigned: {
-        type: String,
-        default: null
+    assignedUserId:{
+        type:String,
     },
-    status: {
-        type: String,
-        default: null
+    assignedUserName:{
+        type:String,
+    },
+    status:{
+        type:String,
+        required:true,
+        default:"toDo"
     },
     createdAt:{
-        type:Number,
+        type:Date,
         require:true,
     },
     updatedAt:{
-        type:Number,
+        type:Date,
         require:true,
-        default:null,
     },
-})
-module.exports = mongoose.model('Task', taskSchema)
+});
+
+module.exports = mongoose.model('Task', taskSchema);

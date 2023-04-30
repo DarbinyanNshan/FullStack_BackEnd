@@ -6,7 +6,7 @@ const userSchema = new Schema({
         type: String,
         default: null
     },
-    fristName: {
+    firstName: {
         type: String,
         default: null
     },
@@ -14,19 +14,11 @@ const userSchema = new Schema({
         type: String,
         default: null
     },
-    age: {
-        type: Number,
-        default: null
-    },
     email: {
         type: String,
         default: null
     },
     password: {
-        type: String,
-        default: null
-    },
-    image: {
         type: String,
         default: null
     },
